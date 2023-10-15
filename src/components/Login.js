@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import authService from "../services/AuthService";
+import AuthService from "../services/AuthService";
 
 export default function Login({ setToken }) {
     const [username, setUsername] = useState('');
@@ -8,13 +8,13 @@ export default function Login({ setToken }) {
     const handleLogin = () => {
         if (username && password) {
             // Submit the data to the backend for authentication
-            const token = authService.login(username, password);
+            const token = AuthService.login(username, password);
             setToken(token);
         } else {
             alert('Both fields are required!');
         }
     };
-
+    
     return (
         <div>
             <input 
