@@ -1,45 +1,37 @@
 import { useState, useEffect } from "react"
 import {useLocation, useNavigate } from 'react-router-dom';
 import QuizService from "../services/QuizService";
+import QuizQuestion from "./QuizQuestion";
 
 export default function Quiz({  }){
   
     const location = useLocation();
-    const navigate = useNavigate();
-    const [optionId, setOptionId] = useState(0);
+    const navigate = useNavigate();  
 
     const quizId = location.state.id
 
-    console.log(quizId);
-
-
     const [takeId, setTakeId] = useState(0);
-    const [quiz, setQuiz] = useState({});
+    const [quiz, setQuiz] = useState(undefined);
+    const [questionIndex, setQuestionIndex] = useState(0);
+    const [optionId, setOptionId] = useState(0);
 
+    const exitHandler = () => { navigate("/Home") };
 
-    const exitHandler = () => { navigate("/Home") }
-
-    const nextHandler = () => 
+    const nextHandler = () => {};
 
     useEffect(() => {                                
         QuizService.startTake(quizId)
-            .then(response => {                    
-                setTakeId(response.data.takeId)
+            .then(r => {                    
+                setTakeId(r.data.takeId);
             })
-            .then(() =>{
-                QuizService.getQuiz(quizId)
-                    .then(response => setQuiz(response.data.quizz))
-                    .then()
-        });                           
-    }, [quizId]);
+        QuizService.getQuiz(quizId)
+            .then(r => {
+                setQuiz(r.data.quiz);
+            })},
+        [quizId]);
 
-    useEffect(() => {
-        Quiz
-    });
-    
+   if(quiz)
     return(
-        <p>
-            
-        </p>
-    )  
+        <QuizQuestion question = {quiz.questions[0]} setOptionId={setOptionId}  />
+    );  
 }

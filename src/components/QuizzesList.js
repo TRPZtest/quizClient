@@ -12,17 +12,15 @@ export default function QuizzesList(){
     useEffect(() => {       
         QuizService.getQuizzes()
           .then(response => setList(response.data.quizzes))
-      }, [])
+      }, []);
 
-    const navigateToQuiz = (e, id) => {
-      console.log(id);
-      navigate("/Quiz", {state: {id: id}})
-    }
+    const navigateToQuiz = (e, id) => {      
+        navigate("/Quiz", {state: {id: id}})
+      }
     
     const listItem = (item) => {
         return(
-          <li key={item.id} >
-            {console.log(item.id)}
+          <li key={item.id} >           
             <button onClick={(e) => navigateToQuiz(e, item.id) } className="btn btn-primary">
               {item.name}
             </button>

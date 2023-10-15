@@ -16,8 +16,9 @@ class AuthService {
       });
   }
 
-  logout() {
+  logout(setToken) {
     localStorage.removeItem("token");
+    setToken(undefined);
   }
 
   getCurrentUser() {
