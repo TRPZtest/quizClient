@@ -11,13 +11,12 @@ class AuthService {
     });       
   }
 
-  logout(setToken) {
+  logout() {
     localStorage.removeItem("token");
-    setToken(undefined);
   }
 
   getCurrentUser() {
-    return JSON.parse(localStorage.getItem('token'));;
+    return localStorage.getItem('token');
   }
 }
 

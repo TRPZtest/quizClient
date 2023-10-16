@@ -1,13 +1,12 @@
 import { useState, useEffect } from "react"
-import {useLocation, useNavigate } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import QuizService from "../services/QuizService";
 import Result from "./Result";
 import QuizQuestion from "./QuizQuestion";
 
 export default function Quiz(){
   
-    const location = useLocation();
-    const navigate = useNavigate();  
+    const location = useLocation();     
 
     const quizId = location.state.id
     
@@ -45,8 +44,7 @@ export default function Quiz(){
         QuizService.getQuiz(quizId)
             .then(r => {
                 setQuiz(r.data.quiz);
-            })},
-        []);
+            })}, []);
     
     useEffect(() => {
         if (isLastQuestion) {               

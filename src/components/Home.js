@@ -1,25 +1,18 @@
 import Login from "./Login"
-import React, { useState } from "react";
-import Navbar from "./Navbar";
-
+import AuthService from "../services/AuthService";
+import { useEffect } from "react";
 import QuizzesList from "./QuizzesList"
+import { useNavigate } from "react-router-dom";
 
 export default function Home() {
+  const navigate = useNavigate();
 
-    const [token, setToken] = useState(localStorage.getItem("token"));
-    
-    if (token)
-    return (
-          <>         
-            <Navbar setToken={setToken}/>
-            <QuizzesList />
-          </>
-        );
-      else
-        return (
-          <>                  
-            <Login setToken = { setToken }/>
-          </>
-    );
+    useEffect(() => {
+        if (AuthService.getCurrentUser())
+          navigate('/QuizzesList');
+        else
+          navigate('/Login');
+    }, []);
+      
   }
   

@@ -3,6 +3,9 @@ import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import Quiz from './components/Quiz';
 import QuizQuestion from './components/QuizQuestion';
 import QuizzesList from './components/QuizzesList';
+import Navbar from './components/Navbar';
+import Login from './components/Login';
+import './App.css';
 
 function App() {  
 
@@ -16,17 +19,19 @@ function App() {
    
   return (
     <BrowserRouter>
-      <div className="App">      
-        <div className=' container justify-content-center bg-light h-75'>              
-                <Routes>
+      <div className="App">         
+          <div className='columnContainer container justify-content-center bg-light'>   
+            <Navbar />       
+              <Routes>
                   <Route path='/' element={<Home />} />
                   <Route path='/Home' element={<Home />} />
                   <Route path='/Quiz' element={<Quiz />} />
                   <Route path='/QuizzesList' element={<QuizzesList />}/>
                   <Route path='/QuizQuestion' element={<QuizQuestion />} />
+                  <Route path='/Login' element={<Login />} />
                   <Route path="*" element={<Whoops404 />} />
-                </Routes>            
-          </div>     
+              </Routes>                                         
+          </div>          
       </div>
      </BrowserRouter>    
   );
