@@ -20,17 +20,20 @@ export default function QuizzesList(){
     
     const listItem = (item) => {
         return(
-          <li key={item.id} >           
-            <button onClick={(e) => navigateToQuiz(e, item.id) } className="btn btn-primary">
-              {item.name}
-            </button>
-          </li>
+          <div className="row my-sm-3" key={item.id} > 
+            <div className="col-md-5>">
+              <button onClick={(e) => navigateToQuiz(e, item.id) } className="btn btn-primary">
+                {item.name}
+              </button>
+            </div>          
+          </div>
         )
     };
     
     return(
-        <ul>       
-            {list.map(item => listItem(item))}      
-        </ul>      
+        <>
+          <h3>Quizzez:</h3>
+          {list.map(item => listItem(item))} 
+        </>                  
     )
 }

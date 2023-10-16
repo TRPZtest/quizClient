@@ -1,7 +1,5 @@
-import './App.css';
 import Home from './components/Home';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
-import 'bootstrap/dist/css/bootstrap.css';
 import Quiz from './components/Quiz';
 import QuizQuestion from './components/QuizQuestion';
 import QuizzesList from './components/QuizzesList';
@@ -18,9 +16,8 @@ function App() {
    
   return (
     <BrowserRouter>
-      <div className="App container justify-content-center bg-light h-75">      
-        <div>
-              
+      <div className="App">      
+        <div className=' container justify-content-center bg-light h-75'>              
                 <Routes>
                   <Route path='/' element={<Home />} />
                   <Route path='/Home' element={<Home />} />
@@ -28,8 +25,7 @@ function App() {
                   <Route path='/QuizzesList' element={<QuizzesList />}/>
                   <Route path='/QuizQuestion' element={<QuizQuestion />} />
                   <Route path="*" element={<Whoops404 />} />
-                </Routes>
-            
+                </Routes>            
           </div>     
       </div>
      </BrowserRouter>    

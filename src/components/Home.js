@@ -8,8 +8,6 @@ export default function Home() {
 
     const [token, setToken] = useState(localStorage.getItem("token"));
     
-  
-
     if (token)
     return (
           <>         
