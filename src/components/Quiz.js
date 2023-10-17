@@ -39,12 +39,15 @@ export default function Quiz(){
             .then(r => {                    
                 if (r.data.result)
                     setResult(r.data.result);
-                setTakeId(r.data.takeId);
+                else {
+                    setTakeId(r.data.takeId);
+                    QuizService.getQuiz(quizId)
+                    .then(r => {
+                        setQuiz(r.data.quiz);
+                    })
+                }              
             })
-        QuizService.getQuiz(quizId)
-            .then(r => {
-                setQuiz(r.data.quiz);
-            })}, []);
+       }, []);
     
     useEffect(() => {
         if (isLastQuestion) {               

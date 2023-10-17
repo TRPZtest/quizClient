@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const API_URL = "http://localhost:5207/Quiz";
+export const API_URL = "http://localhost:8080/Quiz";
 
 class QuizService {
     constructor(){
